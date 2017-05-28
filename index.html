@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+</head>
+<style type="text/css">
+.container {
+    background-color: black;
+    text-align: center;
+}
+
+.inputs {
+    background-color: black;
+    height: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.inputs label {
+    color: white;
+}
+
+.number {
+    background-color: rgba(134, 115, 115, 0.92);
+    color: white;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: white;
+    margin-top: -5px;
+}
+</style>
+
+<body ng-app="starApp">
+    <div ng-controller="StarCtrl" data-ng-init="init()">
+        <div class="container">
+            <canvas id="canvas" width="420" height="420"></canvas>
+            <br>
+            <br>
+        </div>
+        <div class="inputs">
+            <label>Velocity:</label>
+            <input class="number" type="number" max="100" min="-100" ng-model="inputValue" ng-change="inputChange()"  />
+            <input id="slider" ng-change="velocityChange()" type="range" ng-model="sliderValue" min="-300" max="100" data-drag="true" step="1" value="{{sliderValue}}" style="width: 400px" />
+        </div>
+        <script type="text/javascript">
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        </script>
+        <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
